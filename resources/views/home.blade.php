@@ -1,23 +1,45 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+ <div class="container">
+  <div class="row">
+   <div class="col-md-8 col-md-offset-2">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+    @if (Session::has('message'))
+     <div class="alert alert-{{ Session::get('code') }}">
+      <p>{{ Session::get('message') }}</p>
+     </div>
+    @endif
 
-                    You are logged in!
-                </div>
-            </div>
-        </div>
+    <div class="card">
+     <div class="card-header">Express checkout</div>
+     <div class="card-body">
+      Pay $20 via:
+      <a href="{{ route('paypal.express-checkout') }}" class='btn-info btn'>PayPal</a>
+     </div>
     </div>
-</div>
+   <hr>
+    <div class="card">
+     <div class="card-header">Recurring payments</div>
+     <div class="card-body">
+      Pay $20/month:
+      <a href="{{ route('paypal.express-checkout', ['recurring' => true]) }}" class='btn-info btn'>PayPal</a>
+     </div>
+    </div>
+
+   </div>
+
+    <div class="col-md-4">
+    
+        @foreach($user->invoices as $invoice)
+                {{$invoice->recurring_id}}<br>
+                {{$invoice->payment_status}}
+        @endforeach
+    
+    </div>
+
+
+
+  </div>
+ </div>
 @endsection

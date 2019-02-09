@@ -11,21 +11,7 @@
      </div>
     @endif
 
-    <div class="card">
-     <div class="card-header">Express checkout</div>
-     <div class="card-body">
-      Pay $20 via:
-      <a href="{{ route('paypal.express-checkout') }}" class='btn-info btn'>PayPal</a>
-     </div>
-    </div>
-   
-    <div class="card">
-     <div class="card-header">Recurring payments</div>
-     <div class="card-body">
-      Pay $20/month:
-      <a href="{{ route('paypal.express-checkout', ['recurring' => true]) }}" class='btn-info btn'>PayPal</a>
-     </div>
-    </div>
+    <h1>Hello</h1>
 
    </div>
   </div>

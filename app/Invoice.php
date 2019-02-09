@@ -13,5 +13,9 @@ class Invoice extends Model
     		return false;
     	}
     	return true;
+	}
+	
+	public function user(){
+        return $this->belongsTo('App\User');
     }
 }
